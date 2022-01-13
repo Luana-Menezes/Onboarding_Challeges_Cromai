@@ -1,4 +1,4 @@
-# Onboarding Challeges Cromai
+# Onboarding Challenges Cromai
 
 1. Coletar dados dos sensores
 2. Acionamento do LED
