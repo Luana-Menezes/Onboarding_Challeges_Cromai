@@ -10,10 +10,10 @@
   docker run -it --privileged <container> /bin/sh 
   ```
   
-3. Execute os códigos python dentro do
+3. Execute os códigos python dentro do container.
   ```sh
-  python LED.py 
+  python `LED.py` 
   ```
   ```sh
-  python sensors_to_csv.py
+  python `sensors_to_csv.py`
   ```
