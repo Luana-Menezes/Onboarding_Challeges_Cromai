@@ -1,0 +1,36 @@
+from time import sleep, time
+from picamera import PiCamera
+from datetime import datetime
+import os
+import csv
+
+def get_date_now():
+	datetime_today = datetime.now()
+	str_date_today = datetime_today.strftime('%b %d, %Y')
+	print(str_date_today)
+
+	str_time_today = datetime_today.strftime('%H:%M:%S')
+	print(str_time_today)
+	return [str_date_today, str_time_today]
+
+def capture_photo():
+	camera = PiCamera()
+	camera.resolution = (1662, 1232)
+	camera.rotation = -90
+	#camera.exposure_mode = 'fireworks'
+	#camera.awb_mode = 'flash'
+	#dormir
+	sleep(2)
+	filename = 'image_' + str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) + '.jpg'	
+	camera.capture('./photos/' + filename)	
+	fullpath = os.getcwd() + '/photos/' + filename	
+	print("Foto Capturada: " + fullpath)
+	return fullpath
+
+def save_to_csv():
+
+	with open('teste.csv', 'a') as csv_file:
+		writer = csv.writer(csv_file)
+		writer.writerow([capture_photo(),get_datetime_now()[0],get_datetime_now()[1]])
+
+save_to_csv()
